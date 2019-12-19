@@ -1,6 +1,7 @@
 TAG ?= pwn
 NAME ?= pwn-$(shell date +%s | shasum | fold -w 8 | head -1)
 LABEL := dev.ssrf.pwn
+WORKSPACE ?= $(CURDIR)/workspace
 
 .PHONY: build
 build:
@@ -16,7 +17,7 @@ ps:
 
 .PHONY: run
 run:
-	@ docker run --privileged -itd -v $(CURDIR)/workspace:/workspace -w /workspace --name $(NAME) pwn:latest /bin/sh > /dev/null
+	@ docker run --privileged -itd -v $(WORKSPACE):/workspace -w /workspace --name $(NAME) pwn:latest /bin/sh > /dev/null
 	docker exec -it $(NAME) /bin/zsh
 
 .PHONY: stop

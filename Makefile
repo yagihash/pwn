@@ -17,8 +17,7 @@ ps:
 
 .PHONY: run
 run:
-	@ docker run --privileged -itd -v $(WORKSPACE):/workspace -w /workspace --name $(NAME) pwn:latest /bin/sh > /dev/null
-	docker exec -it $(NAME) /bin/zsh
+	docker run --privileged -itd -v $(WORKSPACE):/workspace -w /workspace --name $(NAME) pwn:latest /bin/sh > /dev/null && docker exec -it $(NAME) /bin/zsh
 
 .PHONY: stop
 stop:

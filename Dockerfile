@@ -22,5 +22,3 @@ RUN curl -sL https://starship.rs/install.sh | bash -s -- --yes
 COPY ./.gdbinit /root/.gdbinit
 COPY ./.zshrc.local /root/.zshrc.local
 COPY ./bin /root/bin
-
-CMD ["echo", "hoge"]
